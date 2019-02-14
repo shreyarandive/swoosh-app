@@ -17,7 +17,6 @@ class LeagueVC: UIViewController {
         super.viewDidLoad()
         
         player = Player();
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func onNextTapped(_ sender: Any) {
@@ -42,6 +41,12 @@ class LeagueVC: UIViewController {
     func selectedLeague(leagueType: String){
         player.desiredLeague = leagueType
         nextBtn.isEnabled = true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let skillVC = segue.destination as? SkillVC {
+            skillVC.player = player
+        }
     }
     /*
     // MARK: - Navigation
